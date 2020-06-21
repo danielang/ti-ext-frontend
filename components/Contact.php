@@ -38,7 +38,11 @@ class Contact extends BaseComponent
     {
         $this->location = Location::current();
 
-        $this->subjects = ['General enquiry', 'Comment', 'Technical Issues'];
+        $this->subjects = [
+            'igniter.frontend::default.contact.text_general_enquiry',
+            'igniter.frontend::default.contact.text_comment',
+            'igniter.frontend::default.contact.text_technical_issues',
+        ];
     }
 
     public function onSubmit()
@@ -46,8 +50,8 @@ class Contact extends BaseComponent
         try {
             $rules = [
                 ['subject', 'lang:igniter.frontend::default.contact.text_select_subject', 'required|max:128'],
-                ['email', 'lang:igniter.frontend::default.contact.label_email', 'required|email'],
-                ['full_name', 'lang:igniter.frontend::default.contact.label_full_name', 'required|min:6|max:255'],
+                ['email', 'lang:igniter.frontend::default.contact.label_email', 'required|email:filter|max:96'],
+                ['full_name', 'lang:igniter.frontend::default.contact.label_full_name', 'required|min:2|max:255'],
                 ['telephone', 'lang:igniter.frontend::default.contact.label_telephone', 'required'],
                 ['comment', 'lang:igniter.frontend::default.contact.label_comment', 'max:1500'],
             ];
@@ -57,11 +61,12 @@ class Contact extends BaseComponent
             $data = [
                 'full_name' => post('full_name'),
                 'contact_topic' => post('subject'),
+                'contact_email' => post('email'),
                 'contact_telephone' => post('telephone'),
                 'contact_message' => post('comment'),
             ];
 
-            Mail::send('igniter.frontend::mail.contact', $data, function ($message) {
+            Mail::queue('igniter.frontend::mail.contact', $data, function ($message) {
                 $message->to(setting('site_email'), setting('site_name'));
             });
 

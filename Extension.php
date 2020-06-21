@@ -53,14 +53,14 @@ class Extension extends \System\Classes\BaseExtension
     public function registerNavigation()
     {
         return [
-            'marketing' => [
+            'design' => [
                 'child' => [
                     'banners' => [
                         'priority' => 30,
-                        'class' => 'pages',
+                        'class' => 'banners',
                         'href' => admin_url('igniter/frontend/banners'),
-                        'title' => lang('admin::lang.side_menu.banner'),
-                        'permission' => 'Module.BannersModule',
+                        'title' => lang('igniter.frontend::default.text_side_menu'),
+                        'permission' => ['Igniter.FrontEnd.ManageBanners', 'Igniter.FrontEnd.ManageSlideshow'],
                     ],
                 ],
             ],
@@ -70,17 +70,17 @@ class Extension extends \System\Classes\BaseExtension
     public function registerPermissions()
     {
         return [
-            'Module.BannersModule' => [
-                'description' => 'Ability to manage banners module',
+            'Igniter.FrontEnd.ManageSettings' => [
+                'description' => 'Configure google recaptcha and mailchimp settings',
                 'group' => 'module',
             ],
-            'Module.Slideshow' => [
+            'Igniter.FrontEnd.ManageBanners' => [
+                'description' => 'Create, modify and delete front-end banners',
                 'group' => 'module',
-                'description' => 'Ability to manage homepage slide show module',
             ],
-            'Module.FeaturedItems' => [
+            'Igniter.FrontEnd.ManageSlideshow' => [
                 'group' => 'module',
-                'description' => 'Ability to manage featured menu module',
+                'description' => 'Create, modify and delete front-end sliders',
             ],
         ];
     }
@@ -88,24 +88,19 @@ class Extension extends \System\Classes\BaseExtension
     public function registerSettings()
     {
         return [
-            'slidersettings' => [
-                'label' => 'Slider Settings',
-                'description' => 'Manage slider settings.',
-                'icon' => '',
-                'model' => 'Igniter\Frontend\Models\SliderSettings',
-                'permissions' => ['Module.Slideshow'],
-            ],
             'captchasettings' => [
                 'label' => 'reCaptcha Settings',
                 'description' => 'Manage google reCAPTCHA settings.',
                 'icon' => '',
                 'model' => 'Igniter\Frontend\Models\CaptchaSettings',
+                'permissions' => ['Igniter.FrontEnd.ManageSettings'],
             ],
             'mailchimpsettings' => [
                 'label' => 'Mailchimp Settings',
                 'description' => 'Manage Mailchimp API settings.',
                 'icon' => '',
                 'model' => 'Igniter\Frontend\Models\MailchimpSettings',
+                'permissions' => ['Igniter.FrontEnd.ManageSettings'],
             ],
         ];
     }
@@ -136,6 +131,6 @@ class Extension extends \System\Classes\BaseExtension
     {
         Validator::extendImplicit('recaptcha', function ($attribute, $value, $parameters, $validator) {
             return app('recaptcha')->verifyResponse($value);
-        }, lang('igniter.frontend::default.captcha.error_recaptcha'));
+        }, 'igniter.frontend::default.captcha.error_recaptcha');
     }
 }

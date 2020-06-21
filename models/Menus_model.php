@@ -1,7 +1,9 @@
 <?php namespace Igniter\Frontend\Models;
 
-class FeaturedItems extends \Admin\Models\Menus_model
+class Menus_model extends \Igniter\Cart\Models\Menus_model
 {
+    protected $primaryKey = 'menu_id';
+
     public static function getByIds($options = [])
     {
         extract(array_merge([
@@ -25,7 +27,7 @@ class FeaturedItems extends \Admin\Models\Menus_model
             if (count($parts) < 2) {
                 array_push($parts, 'desc');
             }
-            list($sortField, $sortDirection) = $parts;
+            [$sortField, $sortDirection] = $parts;
             $query->orderBy($sortField, $sortDirection);
         }
 

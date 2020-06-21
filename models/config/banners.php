@@ -23,15 +23,15 @@ $config['list']['toolbar'] = [
         'delete' => [
             'label' => 'lang:admin::lang.button_delete',
             'class' => 'btn btn-danger',
+            'data-request' => 'onDelete',
             'data-request-form' => '#list-form',
-            'data-request-handler' => 'onDelete',
             'data-request-confirm' => 'lang:admin::lang.alert_warning_confirm',
         ],
-        'filter' => [
-            'label' => 'lang:admin::lang.button_icon_filter',
-            'class' => 'btn btn-default btn-filter',
-            'data-toggle' => 'list-filter',
-            'data-target' => '.list-filter',
+        'sliders' => [
+            'label' => lang('igniter.frontend::default.slider.text_title'),
+            'class' => 'btn btn-default',
+            'href' => 'igniter/frontend/sliders',
+            'permission' => 'Igniter.FrontEnd.ManageSlideshow',
         ],
     ],
 ];
@@ -46,12 +46,12 @@ $config['list']['columns'] = [
         ],
     ],
     'name' => [
-        'label' => 'lang:igniter.frontend::default.banners.column_name',
+        'label' => 'lang:admin::lang.label_name',
         'type' => 'text',
         'searchable' => TRUE,
     ],
     'type_label' => [
-        'label' => 'lang:igniter.frontend::default.banners.column_type',
+        'label' => 'lang:admin::lang.label_type',
         'type' => 'text',
     ],
     'status' => [
@@ -96,12 +96,12 @@ $config['form']['toolbar'] = [
 
 $config['form']['fields'] = [
     'name' => [
-        'label' => 'lang:igniter.frontend::default.banners.label_name',
+        'label' => 'lang:admin::lang.label_name',
         'type' => 'text',
     ],
     'type' => [
         'label' => 'lang:igniter.frontend::default.banners.label_type',
-        'type' => 'radio',
+        'type' => 'radiotoggle',
         'default' => 'image',
         'options' => [
             'image' => 'lang:igniter.frontend::default.banners.text_image',

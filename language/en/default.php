@@ -2,15 +2,16 @@
 
 return [
 
+    'text_side_menu' => 'Banners & Sliders',
+
     'banners' => [
-        '_text_title' => 'Banners',
         'text_tab_general' => 'General',
         'component_title' => 'Banner Component',
         'component_desc' => 'Displays banners',
         'text_edit_banner' => 'Edit Banner',
         'text_title' => 'Banners',
         'text_form_name' => 'Banner',
-        'text_filter_search' => 'Search banner name, type or status.',
+        'text_filter_search' => 'Search by name, type or status.',
         'text_filter_status' => 'View all status',
         'text_empty' => 'There are no banners available.',
         'text_image' => 'Image',
@@ -20,9 +21,6 @@ return [
         'column_dimension' => 'Dimension (W x H)',
         'column_layout_partial' => 'Layout - Partial Area',
         'column_status' => 'Status',
-        'column_name' => 'Name',
-        'column_type' => 'Type',
-        'column_status' => 'Status',
         'column_id' => 'ID',
 
         'label_banner' => 'Banner',
@@ -31,7 +29,6 @@ return [
         'label_height' => 'Height',
         'label_status' => 'Status',
         'label_layout_partial' => 'Layout - Partial Area',
-        'label_name' => 'Name',
         'label_type' => 'Type',
         'label_click_url' => 'Click URL',
         'label_language' => 'Language',
@@ -72,28 +69,29 @@ return [
     ],
 
     'slider' => [
-        '_text_title' => 'Slider',
+        'text_title' => 'Sliders',
         'text_tab_general' => 'General',
         'component_title' => 'Slider Component',
         'component_desc' => 'Displays images slider on homepage',
+        'text_form_name' => 'Slider',
+        'text_empty' => 'There are no sliders available.',
 
         'text_tab_slides' => 'Slides',
 
-        'label_display' => 'Display',
-        'label_dimension' => 'Dimension',
-        'label_dimension_h' => 'Dimension Height',
-        'label_dimension_w' => 'Dimension Width',
-        'label_effect' => 'Effects',
-        'label_speed' => 'Transition Speed',
-        'label_slide_name' => 'Slide Name',
-        'label_slide_image' => 'Slide Image',
-        'label_slide_caption' => 'Slide Caption',
+        'column_updated_at' => 'Updated',
 
-        'help_dimension' => '(W x H)',
+        'label_code' => 'Code',
+        'label_slider' => 'Slider code',
+        'label_effect' => 'Effects',
+        'label_interval' => 'Delay interval between slides',
+        'label_caption' => 'Caption',
+        'label_images' => 'Images',
+        'label_hide_controls' => 'Hide Controls',
+        'label_hide_indicators' => 'Hide Indicators',
+        'label_hide_captions' => 'Hide Captions',
     ],
 
     'newsletter' => [
-        '_text_title' => 'Newsletter',
         'text_tab_general' => 'General',
         'component_title' => 'Newsletter Component',
         'component_desc' => 'Displays the subscribe to newsletter form',
@@ -108,7 +106,6 @@ return [
     ],
 
     'featured' => [
-        '_text_title' => 'Featured Menu Item',
         'text_tab_general' => 'General',
         'component_title' => 'Featured Menu Component',
         'component_desc' => 'Displays list of featured menus on the store front',
